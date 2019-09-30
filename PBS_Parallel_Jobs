@@ -1,0 +1,21 @@
+#This is an example script that will let you run a series of repetitive jobs 
+#at the same time. Essentially, the PBS script will split your jobs and spread
+#the jobs across multiple processors (as many as you requested per job). 
+
+#This script in particular runs 5 jobs simultaneously, each job will correspond
+#to one subject (enumerated in the array "sublist"). At the same time
+
+
+#!/bin/bash
+#PBS -l mem=20gb,nodes=1:ppn=1,gpus=1,walltime=24:00:00,advres=gpgpu2
+#PBS -m abe -M [your email here]
+#PBS -t 0-4 #[this is the line where you specify the number of jobs to cycle through]
+
+bash
+source .bash_profile
+module load [whichever modules your particular script needs]
+
+sublist=('01' '02' '03' '04' '05')
+sub=${sublist[${PBS_ARRAYID}]}  #this line uses the variable PBS_ARRAYID which comes from line 12
+
+python [your python script here] ${sub}  #this line runs a python script and passes your subject as an input
