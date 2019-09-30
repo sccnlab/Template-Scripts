@@ -7,7 +7,7 @@
 
 
 #!/bin/bash
-#PBS -l mem=20gb,nodes=1:ppn=1,gpus=1,walltime=24:00:00,advres=gpgpu2
+#PBS -l mem=16gb,nodes=1:ppn=1,walltime=5:00:00
 #PBS -m abe -M [your email here]
 #PBS -t 0-4 #[this is the line where you specify the number of jobs to cycle through]
 
