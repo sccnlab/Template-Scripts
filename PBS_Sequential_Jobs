@@ -1,0 +1,20 @@
+#This is an example script that will let you run a series of repetitive jobs 
+#one after another.  
+#This script in particular runs 5 jobs in sequence, each job will correspond
+#to one subject (enumerated in the array "sublist"). At the same time
+
+
+#!/bin/bash
+#PBS -l mem=16gb,nodes=1:ppn=1,walltime=5:00:00
+#PBS -m abe -M [your email here]
+
+bash
+source .bash_profile
+module load [whichever modules your particular script needs]
+
+sublist=('01' '02' '03' '04' '05')
+
+for nrun in {1..5};do
+        python [your python script here] ${sublist[${nrun}]} #this line runs a python script and passes your subject as an input
+done
+
