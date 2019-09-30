@@ -1,0 +1,21 @@
+#This is a template pbs file for submitting jobs to the cluster:
+#this specific script requests 16gb of memory, 1 processor per node (you can adjust how many nodes and processors), and
+#5 hours of working time on a cpu-- all of these should be edited based on your specific needs.
+#In order to recieve email updates about when your job has been
+#submitted, ended, and terminated due to error, insert your email
+#as specified below
+
+
+
+
+#!/bin/bash
+#PBS -l mem=16gb,nodes=1:ppn=1,walltime=5:00:00
+#PBS -m abe -M [your-desired-email-address-goes-here]
+
+bash
+source .bash_profile
+module load #your modules go here 
+
+
+python #path/to/file
+
